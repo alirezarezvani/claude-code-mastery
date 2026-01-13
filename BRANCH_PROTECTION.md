@@ -449,7 +449,7 @@ After setting up branch protection:
 
 ## Questions?
 
-- Check [GIT_WORKFLOW.md](./GIT_WORKFLOW.md) for workflow details
+- Check [WORKFLOW_REFINEMENT_GUIDE.md](./WORKFLOW_REFINEMENT_GUIDE.md) for complete workflow setup
 - Check [CONTRIBUTING.md](./CONTRIBUTING.md) for contribution guidelines
 - Open an issue for questions
 - Reach out on [Medium](https://medium.com/@alirezarezvani)
