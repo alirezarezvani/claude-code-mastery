@@ -165,6 +165,55 @@ Real data from 200+ hours of Claude Code usage:
 
 ---
 
+## 🔀 Development Workflow
+
+This repository follows a strict **Git Flow** workflow with mandatory code reviews.
+
+### Quick Workflow Summary
+
+```
+main (production) ← PROTECTED, never push directly
+  └── dev (integration) ← PROTECTED, merge via PR
+       ├── feature/your-feature
+       ├── fix/bug-name
+       └── docs/documentation
+```
+
+### Rules
+- 🚫 **NEVER** push directly to `main`
+- ✅ **ALWAYS** create PRs from feature branches to `dev`
+- 📋 **MANDATORY** code review before merging
+- 🔍 GitHub App review (setup instructions in [BRANCH_PROTECTION.md](./BRANCH_PROTECTION.md))
+
+### Quick Start
+
+```bash
+# 1. Start from dev
+git checkout dev
+git pull origin dev
+
+# 2. Create feature branch
+git checkout -b feature/add-performance-guide
+
+# 3. Make changes and commit
+git add .
+git commit -m "feat: add performance optimization guide"
+
+# 4. Push and create PR to dev (NOT main)
+git push -u origin feature/add-performance-guide
+gh pr create --base dev --title "Add performance guide"
+
+# 5. Wait for code review and approval
+# 6. Merge after approval
+```
+
+**📖 Full documentation:**
+- [GIT_WORKFLOW.md](./GIT_WORKFLOW.md) — Complete workflow guide
+- [BRANCH_PROTECTION.md](./BRANCH_PROTECTION.md) — GitHub protection setup
+- [CONTRIBUTING.md](./CONTRIBUTING.md) — Contribution guidelines
+
+---
+
 ## 🤝 Contributing
 
 Contributions are welcome! Here's how you can help:
@@ -174,7 +223,9 @@ Contributions are welcome! Here's how you can help:
 - **Improve docs** — Clarify confusing sections
 - **Share data** — Add your measured performance insights
 
-Please read [CONTRIBUTING.md](./CONTRIBUTING.md) before submitting.
+**⚠️ Important:** All contributions must follow the Git workflow above.
+
+Please read [CONTRIBUTING.md](./CONTRIBUTING.md) and [GIT_WORKFLOW.md](./GIT_WORKFLOW.md) before submitting.
 
 ---
 
