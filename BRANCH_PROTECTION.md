@@ -169,39 +169,193 @@ Repeat Step 1 with these settings:
 
 ---
 
-## GitHub App Integration (Coming Soon)
+## GitHub Actions Integration
 
-Once you install the GitHub App for code review:
+GitHub Actions workflows are now configured for automated checks.
 
-1. Go back to Branch Protection settings
-2. Under "Require status checks to pass before merging"
-3. Add the GitHub App's status checks:
-   - `code-review-bot`
-   - `style-check`
-   - `content-quality`
+### Status Checks Available
 
-This will make code review mandatory and automated.
+The following CI/CD checks run automatically on all PRs:
+
+1. **`lint`** — File naming conventions and structure validation
+2. **`markdown-lint`** — Markdown quality and formatting
+3. **`link-check`** — Broken link detection
+4. **`structure-check`** — Repository structure verification
+
+### Adding Status Checks to Branch Protection
+
+After the first workflow run:
+
+1. **Navigate to Branch Protection**
+   ```
+   Repository Settings → Branches → main (Edit)
+   ```
+
+2. **Enable Status Checks**
+   - Under "Require status checks to pass before merging"
+   - ✅ Check "Require branches to be up to date before merging"
+
+3. **Select Required Checks**
+   - In the search box, add:
+     - ✅ `lint`
+     - ✅ `markdown-lint`
+     - ✅ `link-check`
+     - ✅ `structure-check`
+
+4. **Repeat for `dev` Branch**
+   - Same checks apply to `dev` branch
+
+5. **Save Changes**
+
+### Workflow Files
+
+All workflows are in `.github/workflows/`:
+
+| Workflow | Purpose | When it Runs |
+|----------|---------|--------------|
+| `ci.yml` | Main CI pipeline (lint, markdown, links, structure) | On PR to main/dev, push to main/dev |
+| `auto-label.yml` | Auto-assigns labels based on changed files | On PR open/update |
+| `stale.yml` | Marks stale issues/PRs | Daily at midnight UTC |
+
+### Viewing Workflow Results
+
+1. **In Pull Requests:**
+   - PR page shows status checks at the bottom
+   - ✅ Green check = all tests passed
+   - ❌ Red X = tests failed (click for details)
+   - 🟡 Yellow circle = tests running
+
+2. **In Actions Tab:**
+   - Go to repository → Actions tab
+   - View all workflow runs
+   - Click on specific run for detailed logs
+   - Filter by workflow, branch, or status
+
+### Troubleshooting Failed Checks
+
+#### Lint Failed
+```bash
+# Run locally to fix issues
+find . -name "* *" -type f  # Find files with spaces
+# Rename files to use hyphens instead
+```
+
+#### Markdown-Lint Failed
+```bash
+# Install and run locally
+npm install -g markdownlint-cli
+markdownlint '**/*.md' --fix
+```
+
+#### Link-Check Failed
+```bash
+# Install and run locally
+npm install -g markdown-link-check
+markdown-link-check README.md
+# Fix broken links in the file
+```
+
+#### Structure-Check Failed
+```bash
+# Verify required files exist
+ls -la README.md CONTRIBUTING.md LICENSE
+ls -la .github/CODEOWNERS .github/pull_request_template.md
+# Add missing files
+```
+
+### Manual Workflow Triggers
+
+Some workflows can be triggered manually:
+
+```bash
+# Trigger stale workflow manually
+gh workflow run stale.yml
+```
+
+### Bypassing Checks (Emergency Only)
+
+If you absolutely must merge despite failing checks:
+
+1. Repository Settings → Branches → Edit rule
+2. Temporarily disable "Require status checks to pass"
+3. Merge your PR
+4. **Immediately re-enable** the requirement
+
+⚠️ **Use this only for critical emergencies!**
 
 ---
 
-## CODEOWNERS File (Optional)
+## CODEOWNERS File
 
-Create a `.github/CODEOWNERS` file to automatically assign reviewers:
+The `.github/CODEOWNERS` file is now configured to automatically assign reviewers.
+
+### How It Works
+
+When someone creates a PR, CODEOWNERS automatically:
+1. Identifies which files were changed
+2. Matches file patterns to owners
+3. Requests review from the appropriate owners
+
+### Current Configuration
+
+See `.github/CODEOWNERS` for the complete configuration. Key patterns:
+
+| Pattern | Owner | Description |
+|---------|-------|-------------|
+| `*` | @alirezarezvani | Global ownership of all files |
+| `*.md` | @alirezarezvani | All documentation files |
+| `/performance/` | @alirezarezvani | Performance guides |
+| `/enterprise/` | @alirezarezvani | Enterprise patterns |
+| `/hooks/` | @alirezarezvani | Hook configurations |
+| `/.github/` | @alirezarezvani | GitHub configuration |
+
+### Enabling CODEOWNERS in Branch Protection
+
+Ensure this is enabled in branch protection settings:
+
+1. Repository Settings → Branches → main (Edit)
+2. Under "Require pull request reviews"
+3. ✅ Check "Require review from Code Owners"
+4. Save changes
+
+### Testing CODEOWNERS
+
+Create a test PR to verify automatic assignment:
+
+```bash
+git checkout -b test/codeowners
+echo "# Test" >> test.md
+git add test.md
+git commit -m "test: verify CODEOWNERS"
+git push -u origin test/codeowners
+gh pr create --base dev --title "Test: CODEOWNERS assignment"
+```
+
+Expected: @alirezarezvani is automatically requested as reviewer
+
+### Expanding for Teams
+
+When your team grows, update `.github/CODEOWNERS`:
 
 ```
-# Global owners for all files
-* @alirezarezvani
+# Documentation team
+*.md @alirezarezvani @docs-team
 
-# Specific ownership
-/performance/ @alirezarezvani
-/enterprise/ @alirezarezvani
-/hooks/ @alirezarezvani
+# Hooks team
+/hooks/ @alirezarezvani @automation-team
 
-# Documentation
-*.md @alirezarezvani
+# Enterprise team
+/enterprise/ @alirezarezvani @enterprise-team
 ```
 
-When someone creates a PR, the listed owners are automatically requested for review.
+### Troubleshooting
+
+**CODEOWNERS not assigning reviewers?**
+
+- Ensure file is named exactly `.github/CODEOWNERS` (all caps, no extension)
+- Verify "Require review from Code Owners" is enabled in branch protection
+- Check CODEOWNERS syntax — paths must match repository structure
+- Ensure owners have repository access
 
 ---
 

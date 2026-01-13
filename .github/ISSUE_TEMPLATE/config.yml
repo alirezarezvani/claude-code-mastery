@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 💬 Ask a Question
+    url: https://github.com/alirezarezvani/claude-code-mastery/discussions
+    about: Ask questions and discuss Claude Code patterns with the community
+  - name: 📰 Read Articles
+    url: https://medium.com/@alirezarezvani
+    about: Read in-depth articles about Claude Code on Medium
+  - name: 📧 Newsletter
+    url: https://your-newsletter-link
+    about: Subscribe to weekly Claude Code insights and updates
