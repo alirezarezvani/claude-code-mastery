@@ -1,0 +1,35 @@
+{
+  "name": "Activity Logger Hook",
+  "description": "Logs all Claude Code sessions with timestamps and summaries",
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"$(date '+%Y-%m-%d %H:%M:%S') | Project: $(basename $CLAUDE_PROJECT_DIR) | $CLAUDE_CONVERSATION_SUMMARY\" >> ~/.claude/activity.log"
+          }
+        ]
+      }
+    ]
+  },
+  "setup": {
+    "create_log_file": "touch ~/.claude/activity.log",
+    "view_recent": "tail -20 ~/.claude/activity.log",
+    "search_logs": "grep 'keyword' ~/.claude/activity.log"
+  },
+  "notes": {
+    "when_to_use": [
+      "Tracking time spent on projects",
+      "Building personal productivity insights",
+      "Auditing Claude usage",
+      "Billing/invoicing freelance work"
+    ],
+    "log_format": "YYYY-MM-DD HH:MM:SS | Project: name | Summary of session",
+    "example_output": "2026-01-13 14:30:45 | Project: my-app | Refactored auth module, fixed login bug, added tests",
+    "measured_impact": {
+      "time_saved": "Manual tracking eliminated",
+      "latency_added": "< 100ms (runs after session ends)"
+    }
+  }
+}
