@@ -3,7 +3,7 @@
 > Production-tested patterns, measured performance data, and honest documentation of what works (and what doesn't) in Claude Code.
 
 [![Medium](https://img.shields.io/badge/Medium-@alirezarezvani-black?style=flat&logo=medium)](https://medium.com/@alirezarezvani)
-[![Newsletter](https://img.shields.io/badge/Newsletter-Subscribe-blue?style=flat&logo=substack)](https://your-newsletter-link)
+[![Newsletter](https://img.shields.io/badge/Newsletter-Subscribe-blue?style=flat&logo=substack)](https://claude-code.beehiiv.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ---
@@ -142,10 +142,12 @@ Real data from 200+ hours of Claude Code usage:
 | Repository | Description | Stars |
 |------------|-------------|-------|
 | **[claude-code-mastery](https://github.com/alirezarezvani/claude-code-mastery)** | This repository — comprehensive reference | ⭐ |
-| [llm-spec-kit](https://github.com/creativerezz/llm-spec-kit) | Spec-driven development toolkit | — |
-| [playwright-mcp-example](https://github.com/creativerezz/playwright-mcp-example) | Browser automation MCP server | — |
+| [claude-code-tresor](https://github.com/alirezarezvani/claude-code-tresor) | Production-ready skills, agents, slash commands (v2.7.0) | ⭐ |
+| [claude-skills](https://github.com/alirezarezvani/claude-skills) | 48 domain-specific skills across 6 categories | ⭐ |
+| [claude-code-skill-factory](https://github.com/alirezarezvani/claude-code-skill-factory) | Toolkit for building production-ready Claude Skills | ⭐ |
+| [ClaudeForge](https://github.com/alirezarezvani/ClaudeForge) | CLAUDE.md Generator aligned with Anthropic best practices | ⭐ |
 
-*See [Other Repos](./other-repos/) for the complete ecosystem.*
+*See [Other Repos](./other-repos/) for the complete ecosystem with integration guides.*
 
 ---
 
@@ -165,55 +167,6 @@ Real data from 200+ hours of Claude Code usage:
 
 ---
 
-## 🔀 Development Workflow
-
-This repository follows a strict **Git Flow** workflow with mandatory code reviews.
-
-### Quick Workflow Summary
-
-```
-main (production) ← PROTECTED, never push directly
-  └── dev (integration) ← PROTECTED, merge via PR
-       ├── feature/your-feature
-       ├── fix/bug-name
-       └── docs/documentation
-```
-
-### Rules
-- 🚫 **NEVER** push directly to `main`
-- ✅ **ALWAYS** create PRs from feature branches to `dev`
-- 📋 **MANDATORY** code review before merging
-- 🔍 GitHub App review (setup instructions in [BRANCH_PROTECTION.md](./BRANCH_PROTECTION.md))
-
-### Quick Start
-
-```bash
-# 1. Start from dev
-git checkout dev
-git pull origin dev
-
-# 2. Create feature branch
-git checkout -b feature/add-performance-guide
-
-# 3. Make changes and commit
-git add .
-git commit -m "feat: add performance optimization guide"
-
-# 4. Push and create PR to dev (NOT main)
-git push -u origin feature/add-performance-guide
-gh pr create --base dev --title "Add performance guide"
-
-# 5. Wait for code review and approval
-# 6. Merge after approval
-```
-
-**📖 Full documentation:**
-- [GIT_WORKFLOW.md](./GIT_WORKFLOW.md) — Complete workflow guide
-- [BRANCH_PROTECTION.md](./BRANCH_PROTECTION.md) — GitHub protection setup
-- [CONTRIBUTING.md](./CONTRIBUTING.md) — Contribution guidelines
-
----
-
 ## 🤝 Contributing
 
 Contributions are welcome! Here's how you can help:
@@ -223,16 +176,14 @@ Contributions are welcome! Here's how you can help:
 - **Improve docs** — Clarify confusing sections
 - **Share data** — Add your measured performance insights
 
-**⚠️ Important:** All contributions must follow the Git workflow above.
-
-Please read [CONTRIBUTING.md](./CONTRIBUTING.md) and [GIT_WORKFLOW.md](./GIT_WORKFLOW.md) before submitting.
+Please read [CONTRIBUTING.md](./CONTRIBUTING.md) before submitting.
 
 ---
 
 ## 📧 Stay Updated
 
 **Newsletter:** Weekly Claude Code insights, new patterns, and production tips.  
-[Subscribe here →](https://your-newsletter-link)
+[Subscribe here →](https://claude-code.beehiiv.com/)
 
 **Medium:** In-depth articles with code examples and measured data.  
 [Follow on Medium →](https://medium.com/@alirezarezvani)
