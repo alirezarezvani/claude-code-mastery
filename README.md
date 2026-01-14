@@ -92,9 +92,7 @@ claude "explain this codebase"
 
 | Section | What You'll Learn |
 |---------|-------------------|
-| [VS Code](./integrations/vscode.md) | VS Code + Claude Code setup |
-| [Cursor](./integrations/cursor.md) | Cursor IDE integration |
-| [Neovim](./integrations/neovim.md) | Neovim plugin setup |
+| [Integrations](./integrations/) | IDE setup guides and MCP server configurations |
 | [MCP Servers](./mcp-servers/) | Essential MCP server configurations |
 
 ---
@@ -105,7 +103,7 @@ claude "explain this codebase"
 
 1. Read [Quick Reference → Commands](./quick-reference/commands.md)
 2. Copy [CLAUDE.md → Solo Developer](./claude-md-templates/solo-developer.md) to your project
-3. Try the [Feature Development Workflow](./workflows/feature-development.md)
+3. Explore [Workflows](./workflows/) for end-to-end patterns
 
 ### Intermediate (1-4 weeks)
 
@@ -115,9 +113,9 @@ claude "explain this codebase"
 
 ### Advanced (1+ months)
 
-1. Build [Custom Skills](./skills/production-ready/)
+1. Explore [Custom Skills](./skills/) for specialized tasks
 2. Implement [Enterprise Patterns](./enterprise/)
-3. Study [Session Transcripts](./workflows/session-transcripts/) for optimization insights
+3. Review [Workflows](./workflows/) for optimization insights
 
 ---
 
@@ -164,6 +162,46 @@ Real data from 200+ hours of Claude Code usage:
 | Jan 2026 | [Hooks as Enterprise Guardrails: Compliance Without Killing Productivity](https://medium.com/@alirezarezvani) | Enterprise |
 
 *[View all articles →](https://medium.com/@alirezarezvani)*
+
+---
+
+## 🗺️ Content Roadmap
+
+Content currently in development:
+
+### Workflows
+- Feature Development: Full cycle from plan to PR
+- Bug Investigation: Systematic debugging approach
+- Code Review: PR review workflow
+- Refactoring: Safe refactor patterns
+- Session Transcripts: Real annotated sessions
+
+### Performance
+- Token Efficiency: Reduce usage by 30-40%
+- Model Comparison: Opus vs Sonnet guide
+- Cost Optimization: Minimize API costs
+
+### Enterprise
+- Team Setup: Multi-developer configuration
+- Compliance Patterns: HIPAA, SOC 2, PCI-DSS
+- Audit Logging: Track all activity
+- Managed Settings: Centralized config
+
+### Integrations
+- VS Code: Extension setup guide
+- Cursor: IDE integration
+- Neovim: Plugin setup
+- JetBrains: IntelliJ/WebStorm
+
+### MCP Servers
+- GitHub: PR, issues, code search configuration
+- Playwright: Browser automation setup
+
+### Subagents
+- Code Reviewer: Specialized review agent
+- Test Generator: Test generation patterns
+
+**Want to contribute?** Check [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines or open an issue to discuss new content ideas!
 
 ---
 
