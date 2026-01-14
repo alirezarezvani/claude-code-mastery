@@ -1,0 +1,223 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main, dev]
+  push:
+    branches: [main, dev]
+
+jobs:
+  lint:
+    name: Lint Files
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check file naming conventions
+        run: |
+          echo "Checking file naming conventions..."
+
+          # Check for spaces in filenames (should use hyphens)
+          if find . -type f -name "* *" | grep -v ".git" | grep -v "node_modules"; then
+            echo "❌ Error: Files with spaces found. Use hyphens instead."
+            exit 1
+          fi
+
+          echo "✅ File naming conventions check passed"
+
+      - name: Check for broken internal references
+        run: |
+          echo "Checking for broken internal references..."
+
+          for file in $(find . -name "*.md" -type f | grep -v ".git" | grep -v "node_modules"); do
+            echo "Checking $file..."
+
+            # Extract markdown links [text](path) and verify files exist
+            grep -oP '\]\(\./[^)]+\)' "$file" | sed 's/](\.\///' | sed 's/)$//' | while read -r link; do
+              # Skip external links and anchors
+              if [[ "$link" == http* ]] || [[ "$link" == \#* ]]; then
+                continue
+              fi
+
+              # Remove anchor if present
+              link_file=$(echo "$link" | cut -d'#' -f1)
+
+              # Check if file exists
+              if [[ -n "$link_file" ]] && [[ ! -f "./$link_file" ]]; then
+                echo "❌ Broken reference in $file: $link_file"
+                exit 1
+              fi
+            done
+          done
+
+          echo "✅ Internal references check passed"
+
+  markdown-lint:
+    name: Markdown Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install markdownlint-cli
+        run: npm install -g markdownlint-cli
+
+      - name: Create markdownlint config
+        run: |
+          cat > .markdownlint.json << 'EOF'
+          {
+            "default": true,
+            "MD013": false,
+            "MD033": false,
+            "MD041": false,
+            "MD024": { "siblings_only": true },
+            "MD046": false
+          }
+          EOF
+
+      - name: Run markdownlint
+        run: |
+          markdownlint '**/*.md' --ignore node_modules --ignore .git || {
+            echo "⚠️  Markdown linting issues found. Please fix them."
+            echo "Run locally: npx markdownlint-cli '**/*.md'"
+            exit 1
+          }
+
+  link-check:
+    name: Check Links
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install markdown-link-check
+        run: npm install -g markdown-link-check
+
+      - name: Create link check config
+        run: |
+          cat > .markdown-link-check.json << 'EOF'
+          {
+            "ignorePatterns": [
+              {
+                "pattern": "^https://medium.com/@alirezarezvani"
+              },
+              {
+                "pattern": "^https://your-newsletter-link"
+              }
+            ],
+            "timeout": "10s",
+            "retryOn429": true,
+            "retryCount": 3,
+            "aliveStatusCodes": [200, 206, 301, 302, 307, 308]
+          }
+          EOF
+
+      - name: Check links in markdown files
+        run: |
+          echo "Checking links in markdown files..."
+
+          failed=0
+          for file in $(find . -name "*.md" -type f | grep -v ".git" | grep -v "node_modules"); do
+            echo "Checking links in $file..."
+
+            if ! markdown-link-check "$file" --config .markdown-link-check.json --quiet; then
+              echo "❌ Broken links found in $file"
+              failed=1
+            fi
+          done
+
+          if [ $failed -eq 1 ]; then
+            echo "⚠️  Link check failed. Please fix broken links."
+            exit 1
+          fi
+
+          echo "✅ All links are valid"
+
+  structure-check:
+    name: Repository Structure Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Verify required files exist
+        run: |
+          echo "Verifying repository structure..."
+
+          required_files=(
+            "README.md"
+            "CONTRIBUTING.md"
+            "LICENSE"
+            "GIT_WORKFLOW.md"
+            "BRANCH_PROTECTION.md"
+            ".gitignore"
+            ".github/CODEOWNERS"
+            ".github/pull_request_template.md"
+          )
+
+          missing_files=()
+
+          for file in "${required_files[@]}"; do
+            if [[ ! -f "$file" ]]; then
+              missing_files+=("$file")
+            fi
+          done
+
+          if [ ${#missing_files[@]} -ne 0 ]; then
+            echo "❌ Missing required files:"
+            printf '%s\n' "${missing_files[@]}"
+            exit 1
+          fi
+
+          echo "✅ All required files present"
+
+      - name: Verify directory structure
+        run: |
+          echo "Verifying directory structure..."
+
+          required_dirs=(
+            "quick-reference"
+            "claude-md-templates"
+            "hooks"
+            "skills"
+            "performance"
+            "workflows"
+            "enterprise"
+            "integrations"
+            "mcp-servers"
+            "subagents"
+            ".github/workflows"
+            ".github/PULL_REQUEST_TEMPLATE"
+            ".github/ISSUE_TEMPLATE"
+          )
+
+          missing_dirs=()
+
+          for dir in "${required_dirs[@]}"; do
+            if [[ ! -d "$dir" ]]; then
+              missing_dirs+=("$dir")
+            fi
+          done
+
+          if [ ${#missing_dirs[@]} -ne 0 ]; then
+            echo "❌ Missing required directories:"
+            printf '%s\n' "${missing_dirs[@]}"
+            exit 1
+          fi
+
+          echo "✅ Directory structure validated"

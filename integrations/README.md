@@ -6,10 +6,10 @@ IDE and editor integrations for Claude Code.
 
 | Integration | Description | Status |
 |-------------|-------------|--------|
-| [VS Code](./vscode.md) | VS Code extension setup | 📋 Coming Soon |
-| [Cursor](./cursor.md) | Cursor IDE integration | 📋 Coming Soon |
-| [Neovim](./neovim.md) | Neovim plugin | 📋 Coming Soon |
-| [JetBrains](./jetbrains.md) | IntelliJ/WebStorm | 📋 Coming Soon |
+| **VS Code** | VS Code extension setup | 📋 Coming Soon |
+| **Cursor** | Cursor IDE integration | 📋 Coming Soon |
+| **Neovim** | Neovim plugin | 📋 Coming Soon |
+| **JetBrains** | IntelliJ/WebStorm | 📋 Coming Soon |
 
 ## Quick Setup
 

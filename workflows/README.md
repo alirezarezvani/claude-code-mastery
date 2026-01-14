@@ -4,21 +4,21 @@ End-to-end patterns for common development tasks with Claude Code.
 
 ## Available Workflows
 
-| Workflow | Description | Complexity |
-|----------|-------------|------------|
-| [Feature Development](./feature-development.md) | Full cycle: plan → implement → test → PR | Medium |
-| [Bug Investigation](./bug-investigation.md) | Systematic debugging approach | Medium |
-| [Code Review](./code-review.md) | PR review workflow | Simple |
-| [Refactoring](./refactoring.md) | Safe refactor patterns | Complex |
+| Workflow | Description | Complexity | Status |
+|----------|-------------|------------|--------|
+| **Feature Development** | Full cycle: plan → implement → test → PR | Medium | 📋 Coming Soon |
+| **Bug Investigation** | Systematic debugging approach | Medium | 📋 Coming Soon |
+| **Code Review** | PR review workflow | Simple | 📋 Coming Soon |
+| **Refactoring** | Safe refactor patterns | Complex | 📋 Coming Soon |
 
 ## Session Transcripts
 
 Real annotated sessions showing Claude Code in action:
 
-| Transcript | What It Shows |
-|------------|---------------|
-| [Successful Refactor](./session-transcripts/successful-refactor.md) | Auth module refactor — what went right |
-| [Failed Migration](./session-transcripts/failed-migration.md) | Database migration — what went wrong |
+| Transcript | What It Shows | Status |
+|------------|---------------|--------|
+| **Successful Refactor** | Auth module refactor — what went right | 📋 Coming Soon |
+| **Failed Migration** | Database migration — what went wrong | 📋 Coming Soon |
 
 ## Quick Workflow Reference
 
