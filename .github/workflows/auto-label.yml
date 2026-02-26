@@ -1,0 +1,74 @@
+name: Auto Label
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  label:
+    name: Auto-assign Labels
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Auto-assign labels based on files changed
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            const labels = [];
+
+            // Get list of changed files
+            const { data: files } = await github.rest.pulls.listFiles({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: pr.number
+            });
+
+            const changedFiles = files.map(f => f.filename);
+
+            // Categorize changes
+            const hasDocChanges = changedFiles.some(f => f.endsWith('.md'));
+            const hasWorkflowChanges = changedFiles.some(f => f.includes('.github/workflows'));
+            const hasTemplateChanges = changedFiles.some(f => f.includes('claude-md-templates'));
+            const hasHookChanges = changedFiles.some(f => f.includes('hooks/'));
+            const hasSkillChanges = changedFiles.some(f => f.includes('skills/'));
+            const hasPerformanceChanges = changedFiles.some(f => f.includes('performance/'));
+            const hasWorkflowDocsChanges = changedFiles.some(f => f.includes('workflows/'));
+            const hasEnterpriseChanges = changedFiles.some(f => f.includes('enterprise/'));
+            const hasQuickRefChanges = changedFiles.some(f => f.includes('quick-reference/'));
+
+            // Assign labels
+            if (hasDocChanges && !hasWorkflowChanges) labels.push('documentation');
+            if (hasWorkflowChanges) labels.push('github-actions');
+            if (hasTemplateChanges) labels.push('templates');
+            if (hasHookChanges) labels.push('hooks');
+            if (hasSkillChanges) labels.push('skills');
+            if (hasPerformanceChanges) labels.push('performance');
+            if (hasWorkflowDocsChanges) labels.push('workflows');
+            if (hasEnterpriseChanges) labels.push('enterprise');
+            if (hasQuickRefChanges) labels.push('quick-reference');
+
+            // Size labels based on lines changed
+            const totalChanges = files.reduce((sum, f) => sum + f.changes, 0);
+            if (totalChanges < 50) labels.push('size/small');
+            else if (totalChanges < 200) labels.push('size/medium');
+            else labels.push('size/large');
+
+            // Add labels if any were determined
+            if (labels.length > 0) {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: pr.number,
+                labels: labels
+              });
+
+              console.log(`Added labels: ${labels.join(', ')}`);
+            }

@@ -32,7 +32,6 @@ Hooks live in `.claude/settings.json`:
 |---------|-------------|------------|
 | [Auto-Format](./examples/auto-format.json) | Format code after edits | Simple |
 | [Activity Logger](./examples/activity-logger.json) | Log all sessions | Simple |
-| [Security Audit](./examples/security-audit.json) | Block dangerous operations | Medium |
 | [Enterprise Guardrails](./examples/enterprise-guardrails.json) | Compliance enforcement | Complex |
 
 ## Quick Start

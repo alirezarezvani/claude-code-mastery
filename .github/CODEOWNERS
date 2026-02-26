@@ -1,0 +1,102 @@
+# CODEOWNERS — Automatic Reviewer Assignment
+#
+# This file defines who owns and reviews changes to different parts of the repository.
+# When a PR touches files matching these patterns, the listed owners are automatically
+# requested for review.
+#
+# Syntax: <file-pattern> <@github-username> <@github-team>
+# Multiple owners can be specified for redundancy and faster reviews.
+
+# Global Ownership
+# All files default to the primary maintainer
+* @alirezarezvani
+
+# Documentation
+# All markdown files require review for clarity and accuracy
+*.md @alirezarezvani
+README.md @alirezarezvani
+CONTRIBUTING.md @alirezarezvani
+LICENSE @alirezarezvani
+
+# Git Workflow Documentation
+GIT_WORKFLOW.md @alirezarezvani
+BRANCH_PROTECTION.md @alirezarezvani
+WORKFLOW_REFINEMENT_GUIDE.md @alirezarezvani
+
+# Quick Reference
+/quick-reference/ @alirezarezvani
+/quick-reference/*.md @alirezarezvani
+
+# Templates
+/claude-md-templates/ @alirezarezvani
+/claude-md-templates/anti-patterns/ @alirezarezvani
+
+# Hooks and Automation
+/hooks/ @alirezarezvani
+/hooks/examples/*.json @alirezarezvani
+
+# Skills
+/skills/ @alirezarezvani
+/skills/production-ready/ @alirezarezvani
+/skills/experimental/ @alirezarezvani
+
+# Performance Documentation
+/performance/ @alirezarezvani
+/performance/*.md @alirezarezvani
+
+# Workflows
+/workflows/ @alirezarezvani
+/workflows/session-transcripts/ @alirezarezvani
+
+# Enterprise Patterns
+/enterprise/ @alirezarezvani
+/enterprise/*.md @alirezarezvani
+
+# Integrations
+/integrations/ @alirezarezvani
+/integrations/*.md @alirezarezvani
+
+# MCP Servers
+/mcp-servers/ @alirezarezvani
+/mcp-servers/configs/ @alirezarezvani
+
+# Subagents
+/subagents/ @alirezarezvani
+/subagents/templates/ @alirezarezvani
+
+# GitHub Configuration
+/.github/ @alirezarezvani
+/.github/workflows/*.yml @alirezarezvani
+/.github/CODEOWNERS @alirezarezvani
+/.github/pull_request_template.md @alirezarezvani
+/.github/PULL_REQUEST_TEMPLATE/*.md @alirezarezvani
+/.github/ISSUE_TEMPLATE/*.md @alirezarezvani
+
+# GitHub Actions — Critical for CI/CD
+/.github/workflows/ci.yml @alirezarezvani
+/.github/workflows/auto-label.yml @alirezarezvani
+/.github/workflows/stale.yml @alirezarezvani
+
+# Configuration Files
+.gitignore @alirezarezvani
+.markdownlint.json @alirezarezvani
+
+# Repository Metadata
+/other-repos/ @alirezarezvani
+
+# ---
+# Team-Based Ownership (for future expansion)
+# ---
+# Uncomment and customize when adding team members
+#
+# Documentation Team (reviews all markdown)
+# *.md @alirezarezvani @docs-team
+#
+# Hooks Team (reviews automation)
+# /hooks/ @alirezarezvani @automation-team
+#
+# Enterprise Team (reviews enterprise patterns)
+# /enterprise/ @alirezarezvani @enterprise-team
+#
+# Performance Team (reviews optimization guides)
+# /performance/ @alirezarezvani @performance-team
