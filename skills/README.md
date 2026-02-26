@@ -20,18 +20,18 @@ Skills are instruction files that teach Claude Code how to perform specific task
 
 ### Production-Ready
 
-| Skill | Description | Trigger |
-|-------|-------------|---------|
-| [Code Review](./production-ready/code-review.md) | Comprehensive review checklist | "review", "check for issues" |
-| [Test Writer](./production-ready/test-writer.md) | Generate tests following patterns | "write tests", "add tests" |
-| [PR Generator](./production-ready/pr-generator.md) | Create detailed PR descriptions | "create PR", "prepare PR" |
-| [Doc Generator](./production-ready/doc-generator.md) | Generate documentation | "document", "add docs" |
+| Skill | Description | Trigger | Status |
+|-------|-------------|---------|--------|
+| **Code Review** | Comprehensive review checklist | "review", "check for issues" | 📋 Coming Soon |
+| **Test Writer** | Generate tests following patterns | "write tests", "add tests" | 📋 Coming Soon |
+| **PR Generator** | Create detailed PR descriptions | "create PR", "prepare PR" | 📋 Coming Soon |
+| **Doc Generator** | Generate documentation | "document", "add docs" | 📋 Coming Soon |
 
 ### Experimental
 
 | Skill | Description | Status |
 |-------|-------------|--------|
-| [Multi-Agent](./experimental/multi-agent.md) | Coordinate multiple Claude instances | 🧪 Experimental |
+| **Multi-Agent** | Coordinate multiple Claude instances | 📋 Experimental (Coming Soon) |
 
 ## Skill Anatomy
 

@@ -1,107 +1,80 @@
 # My Claude Code Ecosystem
 
-A collection of repositories that extend and complement Claude Code.
+A comprehensive collection of Claude Code tools, skills, and utilities I've built.
 
-## Core Repository
+## Repository Overview
 
-| Repository | Description | Stars |
-|------------|-------------|-------|
-| **[claude-code-mastery](https://github.com/alirezarezvani/claude-code-mastery)** | This repository — comprehensive reference guide | ⭐ |
-
-## Related Repositories
-
-### Development Tools
-
-| Repository | Description | Use Case |
+| Repository | Description | Best For |
 |------------|-------------|----------|
-| [llm-spec-kit](https://github.com/creativerezz/llm-spec-kit) | Spec-driven development toolkit for AI coding agents | Structured development workflow with Claude Code |
-| [playwright-mcp-example](https://github.com/creativerezz/playwright-mcp-example) | Playwright MCP server for browser automation | Web testing and automation with Claude Code |
-
-### Coming Soon
-
-| Repository | Description | Status |
-|------------|-------------|--------|
-| claude-code-skills | Production-ready skill files | 🚧 In Progress |
-| claude-code-hooks | Enterprise hook examples | 🚧 In Progress |
-| claude-code-workflows | End-to-end workflow templates | 📋 Planned |
+| **[claude-code-mastery](https://github.com/alirezarezvani/claude-code-mastery)** | This repo — reference guide & cheat sheets | Learning Claude Code fundamentals |
+| **[claude-code-tresor](https://github.com/alirezarezvani/claude-code-tresor)** | Production-ready skills, agents, commands (v2.7.0) | Immediate productivity boost |
+| **[claude-skills](https://github.com/alirezarezvani/claude-skills)** | 48 domain-specific skills across 6 categories | Role-specific capabilities |
+| **[claude-code-skill-factory](https://github.com/alirezarezvani/claude-code-skill-factory)** | Toolkit for building custom Claude Skills | Creating your own skills |
+| **[ClaudeForge](https://github.com/alirezarezvani/ClaudeForge)** | CLAUDE.md Generator and maintenance tool | Setting up new projects |
+| **[claude-code-aso-skill](https://github.com/alirezarezvani/claude-code-aso-skill)** | AEO/ASO Automation Framework with sub-agents | App Store Optimization |
 
 ## How These Work Together
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                   claude-code-mastery                       │
-│                 (Reference & Documentation)                 │
-└─────────────────────────┬───────────────────────────────────┘
-                          │
-          ┌───────────────┼───────────────┐
-          ▼               ▼               ▼
-┌─────────────────┐ ┌─────────────┐ ┌─────────────────┐
-│  llm-spec-kit   │ │ playwright- │ │  (future repos) │
-│                 │ │ mcp-example │ │                 │
-│ Spec-driven     │ │             │ │ Skills, hooks,  │
-│ development     │ │ Browser     │ │ workflows       │
-│ workflow        │ │ automation  │ │                 │
-└─────────────────┘ └─────────────┘ └─────────────────┘
+┌─────────────────────────────────────────────────────────────────┐
+│                      claude-code-mastery                         │
+│                   (Reference & Documentation)                    │
+└──────────────────────────┬──────────────────────────────────────┘
+                           │
+       ┌───────────────────┼───────────────────┐
+       ▼                   ▼                   ▼
+┌──────────────────┐ ┌──────────────────┐ ┌──────────────────┐
+│ claude-code-     │ │   claude-skills  │ │   ClaudeForge    │
+│     tresor       │ │                  │ │                  │
+│                  │ │ 48 skills:       │ │ Generate         │
+│ 8 Skills         │ │ - Marketing (5)  │ │ CLAUDE.md files  │
+│ 8 Agents         │ │ - Engineering(18)│ │ for any project  │
+│ 4 Commands       │ │ - Product (5)    │ │                  │
+│ 20+ Prompts      │ │ - C-Level (2)    │ │                  │
+│                  │ │ - PM (6)         │ │                  │
+└──────────────────┘ └──────────────────┘ └──────────────────┘
+                           │
+                           ▼
+              ┌──────────────────────┐
+              │ claude-code-skill-   │
+              │      factory         │
+              │                      │
+              │ Build your own       │
+              │ custom skills        │
+              └──────────────────────┘
 ```
 
-## Integration Examples
+## Quick Start by Goal
 
-### Using llm-spec-kit with Claude Code
-
+### "I want productivity now"
 ```bash
-# Initialize spec-driven project
-npx specify init my-project --ai claude
-
-# Claude Code now has access to /specify, /plan, /constitution commands
-claude
-> /specify Build a user authentication system with OAuth2
+git clone https://github.com/alirezarezvani/claude-code-tresor.git
+cd claude-code-tresor && ./scripts/install.sh
 ```
 
-### Using Playwright MCP with Claude Code
-
-```json
-// .mcp.json
-{
-  "servers": {
-    "playwright": {
-      "type": "sse",
-      "url": "https://your-playwright-mcp.workers.dev/sse"
-    }
-  }
-}
+### "I need domain-specific skills"
+```bash
+git clone https://github.com/alirezarezvani/claude-skills.git
+cd claude-skills
+cp -r marketing-skill/content-creator ~/.claude/skills/
 ```
 
-```
-claude
-> "Navigate to our staging site and take a screenshot of the login page"
-[Claude uses Playwright MCP to control browser]
+### "I'm setting up a new project"
+```bash
+curl -fsSL https://raw.githubusercontent.com/alirezarezvani/ClaudeForge/main/install.sh | bash
+claudeforge init my-project
 ```
 
-## Contributing
+### "I want to build custom skills"
+```bash
+git clone https://github.com/alirezarezvani/claude-code-skill-factory.git
+```
 
-Each repository accepts contributions. See individual CONTRIBUTING.md files.
+---
 
 ## Support
 
 - **Issues:** Open in the relevant repository
-- **Questions:** [GitHub Discussions](https://github.com/alirezarezvani/claude-code-mastery/discussions)
 - **Articles:** [Medium @alirezarezvani](https://medium.com/@alirezarezvani)
 
----
-
-## Full Repository List
-
-### By Topic
-
-**Claude Code:**
-- [claude-code-mastery](https://github.com/alirezarezvani/claude-code-mastery) — Reference guide
-
-**AI Development:**
-- [llm-spec-kit](https://github.com/creativerezz/llm-spec-kit) — Spec-driven development
-
-**MCP Servers:**
-- [playwright-mcp-example](https://github.com/creativerezz/playwright-mcp-example) — Browser automation
-
----
-
-*Want to see a specific tool or integration? [Open an issue](https://github.com/alirezarezvani/claude-code-mastery/issues) with your suggestion.*
+*All repositories are MIT licensed.*

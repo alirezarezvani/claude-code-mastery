@@ -3,7 +3,7 @@
 > Production-tested patterns, measured performance data, and honest documentation of what works (and what doesn't) in Claude Code.
 
 [![Medium](https://img.shields.io/badge/Medium-@alirezarezvani-black?style=flat&logo=medium)](https://medium.com/@alirezarezvani)
-[![Newsletter](https://img.shields.io/badge/Newsletter-Subscribe-blue?style=flat&logo=substack)](https://your-newsletter-link)
+[![Newsletter](https://img.shields.io/badge/Newsletter-Subscribe-blue?style=flat&logo=substack)](https://claude-code.beehiiv.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ---
@@ -92,9 +92,7 @@ claude "explain this codebase"
 
 | Section | What You'll Learn |
 |---------|-------------------|
-| [VS Code](./integrations/vscode.md) | VS Code + Claude Code setup |
-| [Cursor](./integrations/cursor.md) | Cursor IDE integration |
-| [Neovim](./integrations/neovim.md) | Neovim plugin setup |
+| [Integrations](./integrations/) | IDE setup guides and MCP server configurations |
 | [MCP Servers](./mcp-servers/) | Essential MCP server configurations |
 
 ---
@@ -105,7 +103,7 @@ claude "explain this codebase"
 
 1. Read [Quick Reference → Commands](./quick-reference/commands.md)
 2. Copy [CLAUDE.md → Solo Developer](./claude-md-templates/solo-developer.md) to your project
-3. Try the [Feature Development Workflow](./workflows/feature-development.md)
+3. Explore [Workflows](./workflows/) for end-to-end patterns
 
 ### Intermediate (1-4 weeks)
 
@@ -115,9 +113,9 @@ claude "explain this codebase"
 
 ### Advanced (1+ months)
 
-1. Build [Custom Skills](./skills/production-ready/)
+1. Explore [Custom Skills](./skills/) for specialized tasks
 2. Implement [Enterprise Patterns](./enterprise/)
-3. Study [Session Transcripts](./workflows/session-transcripts/) for optimization insights
+3. Review [Workflows](./workflows/) for optimization insights
 
 ---
 
@@ -142,10 +140,12 @@ Real data from 200+ hours of Claude Code usage:
 | Repository | Description | Stars |
 |------------|-------------|-------|
 | **[claude-code-mastery](https://github.com/alirezarezvani/claude-code-mastery)** | This repository — comprehensive reference | ⭐ |
-| [llm-spec-kit](https://github.com/creativerezz/llm-spec-kit) | Spec-driven development toolkit | — |
-| [playwright-mcp-example](https://github.com/creativerezz/playwright-mcp-example) | Browser automation MCP server | — |
+| [claude-code-tresor](https://github.com/alirezarezvani/claude-code-tresor) | Production-ready skills, agents, slash commands (v2.7.0) | ⭐ |
+| [claude-skills](https://github.com/alirezarezvani/claude-skills) | 48 domain-specific skills across 6 categories | ⭐ |
+| [claude-code-skill-factory](https://github.com/alirezarezvani/claude-code-skill-factory) | Toolkit for building production-ready Claude Skills | ⭐ |
+| [ClaudeForge](https://github.com/alirezarezvani/ClaudeForge) | CLAUDE.md Generator aligned with Anthropic best practices | ⭐ |
 
-*See [Other Repos](./other-repos/) for the complete ecosystem.*
+*See [Other Repos](./other-repos/) for the complete ecosystem with integration guides.*
 
 ---
 
@@ -165,52 +165,43 @@ Real data from 200+ hours of Claude Code usage:
 
 ---
 
-## 🔀 Development Workflow
+## 🗺️ Content Roadmap
 
-This repository follows a strict **Git Flow** workflow with mandatory code reviews.
+Content currently in development:
 
-### Quick Workflow Summary
+### Workflows
+- Feature Development: Full cycle from plan to PR
+- Bug Investigation: Systematic debugging approach
+- Code Review: PR review workflow
+- Refactoring: Safe refactor patterns
+- Session Transcripts: Real annotated sessions
 
-```
-main (production) ← PROTECTED, never push directly
-  └── dev (integration) ← PROTECTED, merge via PR
-       ├── feature/your-feature
-       ├── fix/bug-name
-       └── docs/documentation
-```
+### Performance
+- Token Efficiency: Reduce usage by 30-40%
+- Model Comparison: Opus vs Sonnet guide
+- Cost Optimization: Minimize API costs
 
-### Rules
-- 🚫 **NEVER** push directly to `main`
-- ✅ **ALWAYS** create PRs from feature branches to `dev`
-- 📋 **MANDATORY** code review before merging
-- 🔍 GitHub App review (setup instructions in [BRANCH_PROTECTION.md](./BRANCH_PROTECTION.md))
+### Enterprise
+- Team Setup: Multi-developer configuration
+- Compliance Patterns: HIPAA, SOC 2, PCI-DSS
+- Audit Logging: Track all activity
+- Managed Settings: Centralized config
 
-### Quick Start
+### Integrations
+- VS Code: Extension setup guide
+- Cursor: IDE integration
+- Neovim: Plugin setup
+- JetBrains: IntelliJ/WebStorm
 
-```bash
-# 1. Start from dev
-git checkout dev
-git pull origin dev
+### MCP Servers
+- GitHub: PR, issues, code search configuration
+- Playwright: Browser automation setup
 
-# 2. Create feature branch
-git checkout -b feature/add-performance-guide
+### Subagents
+- Code Reviewer: Specialized review agent
+- Test Generator: Test generation patterns
 
-# 3. Make changes and commit
-git add .
-git commit -m "feat: add performance optimization guide"
-
-# 4. Push and create PR to dev (NOT main)
-git push -u origin feature/add-performance-guide
-gh pr create --base dev --title "Add performance guide"
-
-# 5. Wait for code review and approval
-# 6. Merge after approval
-```
-
-**📖 Full documentation:**
-- [GIT_WORKFLOW.md](./GIT_WORKFLOW.md) — Complete workflow guide
-- [BRANCH_PROTECTION.md](./BRANCH_PROTECTION.md) — GitHub protection setup
-- [CONTRIBUTING.md](./CONTRIBUTING.md) — Contribution guidelines
+**Want to contribute?** Check [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines or open an issue to discuss new content ideas!
 
 ---
 
@@ -223,16 +214,14 @@ Contributions are welcome! Here's how you can help:
 - **Improve docs** — Clarify confusing sections
 - **Share data** — Add your measured performance insights
 
-**⚠️ Important:** All contributions must follow the Git workflow above.
-
-Please read [CONTRIBUTING.md](./CONTRIBUTING.md) and [GIT_WORKFLOW.md](./GIT_WORKFLOW.md) before submitting.
+Please read [CONTRIBUTING.md](./CONTRIBUTING.md) before submitting.
 
 ---
 
 ## 📧 Stay Updated
 
 **Newsletter:** Weekly Claude Code insights, new patterns, and production tips.  
-[Subscribe here →](https://your-newsletter-link)
+[Subscribe here →](https://claude-code.beehiiv.com/)
 
 **Medium:** In-depth articles with code examples and measured data.  
 [Follow on Medium →](https://medium.com/@alirezarezvani)

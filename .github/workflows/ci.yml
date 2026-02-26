@@ -1,0 +1,68 @@
+name: CI
+
+on:
+  pull_request_target:
+    branches: [main, dev]
+  push:
+    branches: [main, dev]
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout PR code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Check file naming conventions
+        run: |
+          if find . -type f -name "* *" -not -path "./.git/*" | grep -q .; then
+            echo "Files with spaces found. Use hyphens instead:"
+            find . -type f -name "* *" -not -path "./.git/*"
+            exit 1
+          fi
+
+      - name: Check for broken internal references
+        run: |
+          failed=0
+          for file in $(find . -name "*.md" -type f -not -path "./.git/*"); do
+            dir=$(dirname "$file")
+            while read -r link; do
+              [[ "$link" == http* || "$link" == \#* ]] && continue
+              link_file=$(echo "$link" | cut -d'#' -f1)
+              if [[ -n "$link_file" ]] && [[ ! -e "$dir/$link_file" ]]; then
+                echo "Broken reference in $file: $link_file"
+                failed=1
+              fi
+            done < <(grep -oP '\]\(\./[^)]+\)' "$file" | sed 's/](\.\///' | sed 's/)$//')
+          done
+          if [ $failed -eq 1 ]; then exit 1; fi
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run markdownlint
+        run: |
+          npm install -g markdownlint-cli
+          cat > .markdownlint.json << 'EOF'
+          {
+            "default": true,
+            "MD013": false,
+            "MD022": false,
+            "MD024": { "siblings_only": true },
+            "MD031": false,
+            "MD032": false,
+            "MD033": false,
+            "MD036": false,
+            "MD040": false,
+            "MD041": false,
+            "MD046": false,
+            "MD060": false
+          }
+          EOF
+          markdownlint '**/*.md' --ignore node_modules --ignore .git

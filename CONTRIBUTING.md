@@ -70,96 +70,13 @@ This hook auto-formats code after edits:
 - Use lowercase with hyphens: `context-management.md`
 - Be descriptive: `auto-format-hook.json` not `hook1.json`
 
-## Git Workflow & Branching Strategy
-
-**⚠️ IMPORTANT:** We follow a strict Git Flow workflow with mandatory code reviews.
-
-### Quick Start
-
-1. **Always branch from `dev`** (not `main`)
-2. **Use branch prefixes:** `feature/`, `fix/`, or `docs/`
-3. **Create PR to `dev`** (not `main`)
-4. **Wait for code review** (mandatory)
-5. **Merge after approval**
-
-### Branch Structure
-
-```
-main (production) ← PROTECTED
-  └── dev (integration) ← PROTECTED
-       ├── feature/your-feature
-       ├── fix/bug-name
-       └── docs/documentation
-```
-
-### Rules
-- 🚫 **NEVER** push directly to `main`
-- ✅ **ALWAYS** create PRs from feature branches to `dev`
-- 📋 **MANDATORY** code review before merging
-- 🔍 GitHub App review required (setup instructions to follow)
-
-**→ See [GIT_WORKFLOW.md](./GIT_WORKFLOW.md) for complete workflow documentation**
-
 ## Pull Request Process
 
-### 1. Create Your Branch
-
-```bash
-# Start from dev
-git checkout dev
-git pull origin dev
-
-# Create feature branch
-git checkout -b feature/add-workflow-example
-# OR for fixes
-git checkout -b fix/typo-in-readme
-# OR for docs
-git checkout -b docs/update-contributing
-```
-
-### 2. Make Your Changes
-
-- Edit files
-- Test any code examples
-- Follow the style guide below
-
-### 3. Commit & Push
-
-```bash
-git add .
-git commit -m "feat: add workflow example
-
-- Clear step-by-step guide
-- Includes common scenarios
-- Tested in real project
-
-Co-Authored-By: Claude Sonnet 4.5 (1M context) <noreply@anthropic.com>"
-
-git push -u origin feature/add-workflow-example
-```
-
-### 4. Create Pull Request
-
-**Target:** `dev` branch (NOT `main`)
-
-```bash
-gh pr create --base dev --title "Add workflow example" \
-  --body "## Summary
-Brief description of changes
-
-## Checklist
-- [ ] Tested examples
-- [ ] Includes context (when to use / NOT to use)
-- [ ] Measured data included (if applicable)
-- [ ] Follows style guide"
-```
-
-### 5. Code Review
-
-- Wait for automated checks
-- Address review feedback
-- Get approval from reviewer
-- Merge after approval
+1. Fork the repository
+2. Create a feature branch: `git checkout -b add-workflow-example`
+3. Make your changes
+4. Test any code examples
+5. Submit PR with clear description
 
 ## Questions?
 

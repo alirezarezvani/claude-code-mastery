@@ -14,8 +14,8 @@ Subagents are specialized Claude instances that handle specific tasks. Claude Co
 
 | Template | Description | Status |
 |----------|-------------|--------|
-| [Code Reviewer](./templates/code-reviewer.md) | Specialized review agent | 📋 Coming Soon |
-| [Test Generator](./templates/test-generator.md) | Generate tests following patterns | 📋 Coming Soon |
+| **Code Reviewer** | Specialized review agent | 📋 Coming Soon |
+| **Test Generator** | Generate tests following patterns | 📋 Coming Soon |
 
 ## Subagent Patterns
 

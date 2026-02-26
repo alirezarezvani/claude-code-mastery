@@ -4,12 +4,12 @@ Measured data and optimization strategies for Claude Code efficiency.
 
 ## Contents
 
-| File | Description |
-|------|-------------|
-| [Token Efficiency](./token-efficiency.md) | Reduce token usage by 30-40% |
-| [Context Management](./context-management.md) | Prevent session degradation |
-| [Model Comparison](./model-comparison.md) | Opus vs Sonnet: when to use each |
-| [Cost Optimization](./cost-optimization.md) | Minimize API costs |
+| Topic | Description | Status |
+|-------|-------------|--------|
+| **Token Efficiency** | Reduce token usage by 30-40% | 📋 Coming Soon |
+| [Context Management](./context-management.md) | Prevent session degradation | ✅ Available |
+| **Model Comparison** | Opus vs Sonnet: when to use each | 📋 Coming Soon |
+| **Cost Optimization** | Minimize API costs | 📋 Coming Soon |
 
 ## Key Metrics (from 200+ hours of usage)
 

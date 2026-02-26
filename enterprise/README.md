@@ -4,12 +4,12 @@ Team setup, compliance, and governance for Claude Code in enterprise environment
 
 ## Contents
 
-| File | Description |
-|------|-------------|
-| [Team Setup](./team-setup.md) | Configure for multi-developer teams |
-| [Compliance Patterns](./compliance-patterns.md) | HIPAA, SOC 2, PCI-DSS patterns |
-| [Audit Logging](./audit-logging.md) | Track all Claude Code activity |
-| [Managed Settings](./managed-settings.md) | Centralized configuration |
+| Topic | Description | Status |
+|-------|-------------|--------|
+| **Team Setup** | Configure for multi-developer teams | 📋 Coming Soon |
+| **Compliance Patterns** | HIPAA, SOC 2, PCI-DSS patterns | 📋 Coming Soon |
+| **Audit Logging** | Track all Claude Code activity | 📋 Coming Soon |
+| **Managed Settings** | Centralized configuration | 📋 Coming Soon |
 
 ## Quick Start for Teams
 
@@ -52,11 +52,11 @@ Control which MCP servers developers can use:
 
 ## Compliance Considerations
 
-| Standard | Key Requirements | See |
-|----------|-----------------|-----|
-| HIPAA | Audit logs, access controls | [compliance-patterns.md](./compliance-patterns.md) |
-| SOC 2 | Change management, monitoring | [audit-logging.md](./audit-logging.md) |
-| PCI-DSS | Restricted access, encryption | [compliance-patterns.md](./compliance-patterns.md) |
+| Standard | Key Requirements | Status |
+|----------|-----------------|--------|
+| **HIPAA** | Audit logs, access controls | 📋 Guide Coming Soon |
+| **SOC 2** | Change management, monitoring | 📋 Guide Coming Soon |
+| **PCI-DSS** | Restricted access, encryption | 📋 Guide Coming Soon |
 
 ## Security Model
 

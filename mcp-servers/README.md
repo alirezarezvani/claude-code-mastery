@@ -31,15 +31,15 @@ MCP servers are configured in `.mcp.json` at your project root:
 
 ## Essential Servers
 
-| Server | Purpose | Setup |
-|--------|---------|-------|
-| GitHub | PR, issues, code search | [configs/github.json](./configs/github.json) |
-| Playwright | Browser automation | [configs/playwright.json](./configs/playwright.json) |
-| Filesystem | Enhanced file ops | Built-in |
+| Server | Purpose | Status |
+|--------|---------|--------|
+| **GitHub** | PR, issues, code search | 📋 Config Coming Soon |
+| **Playwright** | Browser automation | 📋 Config Coming Soon |
+| **Filesystem** | Enhanced file ops | ✅ Built-in |
 
 ## Recommended Setup
 
-See [configs/](./configs/) for ready-to-use configurations.
+Configuration examples coming soon. Check the [MCP documentation](https://modelcontextprotocol.io/) for more details.
 
 ---
 
