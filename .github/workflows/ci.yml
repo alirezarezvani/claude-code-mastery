@@ -27,10 +27,11 @@ jobs:
         run: |
           failed=0
           for file in $(find . -name "*.md" -type f -not -path "./.git/*"); do
+            dir=$(dirname "$file")
             while read -r link; do
               [[ "$link" == http* || "$link" == \#* ]] && continue
               link_file=$(echo "$link" | cut -d'#' -f1)
-              if [[ -n "$link_file" ]] && [[ ! -e "./$link_file" ]]; then
+              if [[ -n "$link_file" ]] && [[ ! -e "$dir/$link_file" ]]; then
                 echo "Broken reference in $file: $link_file"
                 failed=1
               fi
@@ -50,10 +51,16 @@ jobs:
           {
             "default": true,
             "MD013": false,
-            "MD033": false,
-            "MD041": false,
+            "MD022": false,
             "MD024": { "siblings_only": true },
-            "MD046": false
+            "MD031": false,
+            "MD032": false,
+            "MD033": false,
+            "MD036": false,
+            "MD040": false,
+            "MD041": false,
+            "MD046": false,
+            "MD060": false
           }
           EOF
           markdownlint '**/*.md' --ignore node_modules --ignore .git

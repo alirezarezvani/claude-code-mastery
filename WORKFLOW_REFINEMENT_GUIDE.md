@@ -398,17 +398,17 @@ Update existing documentation with GitHub App specifics:
 3. ✅ Set Code Review Requirements
 
 ### Phase 2: Automated Setup (10 minutes)
-4. ✅ Create GitHub Actions workflows
-5. ✅ Create PR templates
-6. ✅ Create CODEOWNERS file
-7. ✅ Set up workflow automation
-8. ✅ Update documentation
+1. ✅ Create GitHub Actions workflows
+2. ✅ Create PR templates
+3. ✅ Create CODEOWNERS file
+4. ✅ Set up workflow automation
+5. ✅ Update documentation
 
 **→ Commit all Phase 2 files in one feature branch**
 
 ### Phase 3: Integration (10 minutes)
-6. ✅ Configure Required Status Checks (after workflows run)
-9. ✅ Test Complete Workflow
+1. ✅ Configure Required Status Checks (after workflows run)
+2. ✅ Test Complete Workflow
 
 ---
 
